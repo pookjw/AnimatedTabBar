@@ -16,7 +16,7 @@ void *AnimatedTabBarControllerAssociationKey = &AnimatedTabBarControllerAssociat
 
 - (void)_tabBarItemClicked:(UITabBarItem *)tabBarItem {
     struct objc_super superInfo = { self, [self superclass] };
-    ((void (*)(struct objc_super *, SEL, id))objc_msgSendSuper)(&superInfo, _cmd, tabBarItem);
+    reinterpret_cast<void (*)(struct objc_super *, SEL, id)>(objc_msgSendSuper)(&superInfo, _cmd, tabBarItem);
     
     NSSymbolEffect * _Nullable effect = objc_getAssociatedObject(tabBarItem, AnimatedTabBarControllerAssociationKey);
     if (!effect) return;
