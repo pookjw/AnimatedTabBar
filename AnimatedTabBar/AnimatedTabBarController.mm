@@ -22,7 +22,7 @@ void *AnimatedTabBarControllerAssociationKey = &AnimatedTabBarControllerAssociat
     if (!effect) return;
     
     // UITabBarButton
-    UIControl *view = reinterpret_cast<UIControl * (*)(id, SEL)>(objc_msgSend)(tabBarItem, NSSelectorFromString(@"view"));
+    __kindof UIControl *view = reinterpret_cast<id (*)(id, SEL)>(objc_msgSend)(tabBarItem, NSSelectorFromString(@"view"));
     
     unsigned int ivarsCount;
     Ivar *ivars = class_copyIvarList(view.class, &ivarsCount);
@@ -38,7 +38,7 @@ void *AnimatedTabBarControllerAssociationKey = &AnimatedTabBarControllerAssociat
     
     auto location = reinterpret_cast<void *>(base + offset);
     // UITabBarSwappableImageView
-    UIImageView *imageView = *static_cast<UIImageView **>(location);
+    __kindof UIImageView *imageView = *static_cast<id *>(location);
     
     [imageView addSymbolEffect:effect];
 }
