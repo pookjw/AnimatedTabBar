@@ -20,7 +20,6 @@
 }
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-    /* UITabBarButton->_imageView UITabBar.tabBar */
     UIWindow *window = [[UIWindow alloc] initWithWindowScene:static_cast<UIWindowScene *>(scene)];
     
     AnimatedTabBarController *tabBarController = [AnimatedTabBarController new];
